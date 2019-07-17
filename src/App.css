@@ -1,15 +1,38 @@
 .App {
   text-align: center;
+  max-width: 1200px;
+  display: flex;
+  flex-flow: column nowrap;
+  margin: 0 auto;
+  margin-bottom: 50px;
+  background: silver;
+  
 }
 
-.top-section{
+.top-section {
   display: flex;
+  flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
 }
 
-.img-title{
-  font-size: 4rem;
+.img-title {
+  font-size: 3rem;
+  padding: 30px;
+  background: #282c34;
+  color: whitesmoke;
+  box-shadow: 5px 5px 5px grey;
+  text-shadow: 3px 3px 5px black;
+}
+
+.img-container {
+  background: silver;
+}
+
+img {
+  margin-bottom: 20px;
+  box-shadow: 5px 5px 5px grey;
+  max-height: 640px;
 }
 
 .App-logo {
@@ -40,4 +63,18 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.bottom-section {
+  display: flex;
+  align-self: center;
+  flex-flow: row nowrap;
+  width: 100%;
+  background: #282c34;
+  color: whitesmoke;
+}
+
+.bottom-text {
+  padding-left: 10px;
+  padding-right: 10px;
 }

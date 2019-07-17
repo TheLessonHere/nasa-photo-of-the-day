@@ -8,7 +8,7 @@ import "./App.css";
 function App() {
 
   const [currentObj, setCurrentObj] = useState([])
-  const [dateState, setDateState] = useState('2012-03-15')
+  const [dateState, setDateState] = useState('2012-03-14')
 
   useEffect(() => {
     axios.get(`https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=${dateState}`)
@@ -26,14 +26,16 @@ function App() {
   return (
     <div className="App">
       <div className="top-section">
-      <Title title={currentObj.title} />
-      <ImgContainer url={currentObj.url} />
+        <Title title={currentObj.title} />
+        <ImgContainer url={currentObj.url} />
       </div>
       <div className="bottom-section">
-      <CurrentDate date={dateState} />
-      <Description explanation={currentObj.explanation} />
-      <DateButtonL handler={() => setDateState('2012-03-14')} />
-      <DateButtonR handler={() => setDateState('2012-03-16')} />
+        <DateButtonL handler={() => setDateState('2012-03-13')} />
+        <div className="bottom-text">
+          <CurrentDate date={dateState} />
+          <Description explanation={currentObj.explanation} />
+        </div>
+        <DateButtonR handler={() => setDateState('2012-03-15')} />
       </div>
     </div>
   );
