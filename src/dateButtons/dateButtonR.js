@@ -2,14 +2,16 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledButtonR = styled.button`
-  display: inline-block;
+  display: flex;
+  align-self: center;
   border-radius: 4px;
   background-color: #282c34;
   border: 3px solid whitesmoke;
   color: whitesmoke;
   text-align: center;
-  font-size: 28px;
+  font-size: 2rem;
   padding: 20px;
+  height: 100%;
   width: 200px;
   transition: padding-left 0.5s;
   cursor: pointer;
@@ -34,7 +36,7 @@ const StyledButtonR = styled.button`
 
 const StyledButtonSpanR = styled.span`
   cursor: pointer;
-  display: inline-block;
+  display: flex;
   position: relative;
   transition: 0.5s;
 

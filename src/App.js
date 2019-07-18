@@ -31,8 +31,8 @@ const StyledBottomSection = styled.div`
 `
 
 const StyledBottomText = styled.div`
-  padding-left: 10px;
-  padding-right: 10px;
+  margin-left: 100px;
+  margin-right: 100px;
 `;
 
 function App() {
