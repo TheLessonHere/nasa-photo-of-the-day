@@ -2,8 +2,38 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Title, CurrentDate, Description, ImgContainer } from "./APIobjectdata/index"
 import { DateButtonL, DateButtonR } from "./dateButtons/index"
+import styled from "styled-components";
 
-import "./App.css";
+const StyledAppContainer = styled.div`
+  text-align: center;
+  max-width: 1200px;
+  display: flex;
+  flex-flow: column nowrap;
+  margin: 0 auto;
+  margin-bottom: 50px;
+  background: silver;
+`;
+
+const StyledTopSection = styled.div`
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+`;
+
+const StyledBottomSection = styled.div`
+  display: flex;
+  align-self: center;
+  flex-flow: row nowrap;
+  width: 100%;
+  background: #282c34;
+  color: whitesmoke;
+`
+
+const StyledBottomText = styled.div`
+  padding-left: 10px;
+  padding-right: 10px;
+`;
 
 function App() {
 
@@ -23,21 +53,65 @@ function App() {
 
   }, [dateState])
 
+  const dateNext = (datestring) => {
+    let stringday = `${datestring.charAt(8)}${datestring.charAt(9)}`
+    let integday = parseInt(stringday);
+    function dateChangerNext () {
+      if (integday < 31) {
+      const nextdatenum = integday + 1;
+      if (nextdatenum < 10) {
+        const nextdate = `0${nextdatenum.toString()}`;
+        return nextdate
+      } else {
+        const nextdate = nextdatenum.toString();
+        return nextdate
+      }
+      } else {
+        const nextdatenum = 1;
+        const nextdate = `0${nextdatenum.toString()}`;
+        return nextdate
+      }
+    }
+    return dateChangerNext();
+  }
+
+  const datePrev = (datestring) => {
+    let stringday = `${datestring.charAt(8)}${datestring.charAt(9)}`
+    let integday = parseInt(stringday);
+    function dateChangerPrev () {
+      if (integday > 1) {
+      const prevdatenum = integday - 1;
+        if (prevdatenum < 10) {
+          const prevdate = `0${prevdatenum.toString()}`;
+          return prevdate
+        } else {
+          const prevdate = prevdatenum.toString();
+          return prevdate
+        }
+      } else {
+        const prevdatenum = 31;
+        const prevdate = prevdatenum.toString();
+        return prevdate
+      }
+    }
+    return dateChangerPrev();
+  }
+
   return (
-    <div className="App">
-      <div className="top-section">
+    <StyledAppContainer>
+      <StyledTopSection>
         <Title title={currentObj.title} />
         <ImgContainer url={currentObj.url} />
-      </div>
-      <div className="bottom-section">
-        <DateButtonL handler={() => setDateState('2012-03-13')} />
-        <div className="bottom-text">
+      </StyledTopSection>
+      <StyledBottomSection>
+        <DateButtonL handler={() => setDateState(`2012-03-${datePrev(dateState)}`)} />
+        <StyledBottomText>
           <CurrentDate date={dateState} />
           <Description explanation={currentObj.explanation} />
-        </div>
-        <DateButtonR handler={() => setDateState('2012-03-15')} />
-      </div>
-    </div>
+        </StyledBottomText>
+        <DateButtonR handler={() => setDateState(`2012-03-${dateNext(dateState)}`)} />
+      </StyledBottomSection>
+    </StyledAppContainer>
   );
 }
 
